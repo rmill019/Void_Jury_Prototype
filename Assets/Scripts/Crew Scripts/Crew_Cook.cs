@@ -9,7 +9,9 @@ public class Crew_Cook : Crew {
 	public GameObject Sprite;
 	// Use this for initialization
 	void Start () {
-
+		// Set the visibility of the sprite and textbox to false
+		TextBox.SetActive (false);
+		Sprite.SetActive (false);
 	}
 	
 	// Update is called once per frame
@@ -23,6 +25,8 @@ public class Crew_Cook : Crew {
 
 	void OnMouseDown()
 	{
+		// Activate the sprite and corresponding TextBox to be visible when the crew member is clicked on.
+		print ("Cook Selected");
 		Sprite.SetActive (true);
 		TextBox.SetActive (true);
 	}
