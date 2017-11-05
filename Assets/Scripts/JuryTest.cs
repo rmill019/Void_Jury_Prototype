@@ -14,7 +14,7 @@ public class JuryTest : MonoBehaviour {
 		startingPos = new Vector3 (-6f, 3.45f, -12f);
 	}
 
-	public void Judgement() {
+	/*public void Judgement() {
 		Renderer rend = GetComponent<Renderer> ();
 
 		float roll = Random.Range (0.0f, 10.0f);
@@ -26,11 +26,11 @@ public class JuryTest : MonoBehaviour {
 		} else {
 			rend.material.color = Color.red;
 		}
-	}
+	}*/
 
-	void OnMouseDown() {
+	/*void OnMouseDown() {
 		Judgement ();
-	}
+	}*/
 
 	void OnMouseOver ()
 	{
