@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Evidence
   - ClueEntry
+  - AccuseButton
   layers:
   - Default
   - TransparentFX

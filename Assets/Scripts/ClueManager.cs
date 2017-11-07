@@ -25,8 +25,19 @@ public class ClueManager : MonoBehaviour {
 
 	void Awake()
 	{
-		DontDestroyOnLoad (this);		
+		DontDestroyOnLoad (this);	
+		// Populate the Singleton with the followint if and else if statements
+		if (S == null)
+		{
+			S = this;
+		}
+		else if (S != null)
+		{
+			Destroy (this);
+		}
 	}
+
+
 	// Use this for initialization
 	void Start () {
 		_cluesCollected = new List<ClueItem> ();
@@ -42,7 +53,7 @@ public class ClueManager : MonoBehaviour {
 	void Update () {
 
 		RaycastForClues ();
-		PrintCluesInInventory ();
+		//PrintCluesInInventory ();
 
 		// Build Clues
 		if (Input.GetKeyDown (KeyCode.B))
@@ -50,7 +61,7 @@ public class ClueManager : MonoBehaviour {
 			print ("Pressed B");
 			BuildCollectedCluesMenu ();
 		}
-		// Delete this test
+		//TODO Delete this test
 		if (Input.GetKeyDown (KeyCode.A))
 		{
 			foreach (ClueInfo clue in _cluesToPresent)
@@ -64,6 +75,7 @@ public class ClueManager : MonoBehaviour {
 	}
 
 
+	// The following function can be deleted. It's here just to test the clues you've selected in the previous scene
 	void PrintCluesInInventory ()
 	{
 		// Pressing the P key will display all of the clues gathered so far.
@@ -130,7 +142,7 @@ public class ClueManager : MonoBehaviour {
 
 
 	// Function to build the clues we want to select from
-	void BuildCollectedCluesMenu ()
+	public void BuildCollectedCluesMenu ()
 	{
 		_dictClueNameToIndex = new Dictionary<string, int> ();
 		// Create the list of _cluesToPresent in order to store the clues that the player will choose as the
@@ -139,12 +151,12 @@ public class ClueManager : MonoBehaviour {
 
 		for (int i = 0; i < _clueInfoOfCollected.Count; i++)
 		{
-			// Setting each ClueEntry to be active
+			// isActive is toggling on and off based on it's current value.
 			bool isActive = !_builtCluesMenu[i].gameObject.activeInHierarchy;
 			_builtCluesMenu [i].SetActive (isActive);
-			// Each corresponding Image is named the same with "Image" appended to it. That way they are easier to find.
+			// TODO Remove the image part of this comment: Each corresponding Image is named the same with "Image" appended to it. That way they are easier to find.
 			// Example: The image for the Chair clue is named ChairImage
-			string clueSpriteName = _clueInfoOfCollected [i].clueName + "Image";
+			string clueSpriteName = _clueInfoOfCollected [i].clueName;// + "Image";
 			Sprite clueSprite = Resources.Load (clueSpriteName, typeof(Sprite)) as Sprite;
 			// In the set up of the ClueEntry UI elements the Image is the 1st child element, the Text is the 2nd child element
 			// and the button is the 3rd child element. That is why we pass the arguments 0 and 1 to the GetChild() method
