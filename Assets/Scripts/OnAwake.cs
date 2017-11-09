@@ -38,12 +38,4 @@ public class OnAwake : MonoBehaviour {
 			Debug.Log ("The culprit is the Pilot");
 		}
 	}
-
-	void Start() {
-
-	}
-
-	void Update() {
-
-	}
 }

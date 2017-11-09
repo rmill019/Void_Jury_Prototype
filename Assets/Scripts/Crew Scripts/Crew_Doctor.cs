@@ -13,15 +13,6 @@ public class Crew_Doctor : Crew {
 		TextBox.SetActive (false);
 		Sprite.SetActive (false);
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		DeadCheck ();
-	}
-
-	/*void OnMouseDown() {
-		Judgement ();
-	}*/
 
 	void OnMouseDown()
 	{
@@ -29,5 +20,13 @@ public class Crew_Doctor : Crew {
 		print ("Doctor Selected");
 		Sprite.SetActive (true);
 		TextBox.SetActive (true);
+		//Saves selected crew for dialogue purposes
+		selectedCrew = this.name;
+	}
+
+	public void DisplayText() {
+		if (selectedCrew == "Doctor") {
+			DialogueText.SetActive (true);
+		}
 	}
 }

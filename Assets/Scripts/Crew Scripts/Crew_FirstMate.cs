@@ -14,20 +14,19 @@ public class Crew_FirstMate : Crew {
 		Sprite.SetActive (false);
 	}
 
-	// Update is called once per frame
-	void Update () {
-		DeadCheck ();
-	}
-
-	/*void OnMouseDown() {
-		Judgement ();
-	}*/
-
 	void OnMouseDown()
 	{
 		// Activate the sprite and corresponding TextBox to be visible when the crew member is clicked on.
 		print ("First Mate Selected");
 		Sprite.SetActive (true);
 		TextBox.SetActive (true);
+		//Saves selected crew for dialogue purposes
+		selectedCrew = this.name;
+	}
+
+	public void DisplayText() {
+		if (selectedCrew == "FirstMate") {
+			DialogueText.SetActive (true);
+		}
 	}
 }
